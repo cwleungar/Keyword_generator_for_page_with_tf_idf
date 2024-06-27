@@ -3,16 +3,7 @@ from bs4 import BeautifulSoup
 import json
 import requests
 def getUrls():
-    headers = {'User-Agent': 'bot'}
-    response = requests.get("https://www.mi-expert.com" + '/sitemap.xml', headers=headers)
-    soup = BeautifulSoup(response.text, 'lxml')  # Use 'lxml-xml' parser
-    pages = soup.find_all('loc')
     ret=[]
-    for page in pages:
-        url=page.text
-        url=url.replace('https://www.mi-expert.com','https://www.mi-expert.com:8443')
-        ret.append(url)
-    ret=filter(lambda x: '/item/' in x or '/blogitem/' in x,ret)
 
     return list(ret)
 
